@@ -31,59 +31,92 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
     ]
 
-
-user_input = ''
-product_identifier_list = []
-while user_input != 'DONE':
-    user_input = input('Please input a product identifier, or DONE if done: ')
-    #check to see if list is done, if so, print identifiers
-    if user_input == 'DONE':
-        print(product_identifier_list)
-    
-    #check to see if it is a digit
-    elif user_input.isdigit():
-        #while loop to check not out of range    
-        while int(user_input) > len(products):
-            user_input = input('Error: product identifier out of range... please enter an identifier between 1 and ' +
-                               str(len(products)) + ', or zero if done: ')
+def user_inputs(product_list):
+    user_input = ''
+    product_identifier_list = []
+    while user_input != 'DONE':
+        user_input = input('Please input a product identifier, or DONE if done: ')
+        #check to see if list is done, if so, print identifiers
+        if user_input == 'DONE':
+            product_identifier_list = list(set(product_identifier_list))
+            return (product_identifier_list)
         
-            if user_input == 'DONE' or user_input == 0:
-                print(product_identifier_list)
+        #check to see if it is a digit
+        elif user_input.isdigit() and int(user_input) < len(products):
+            #while loop to check not out of range    
+            product_identifier_list.append(int(user_input))
+        
+        else:
+            print('User input error: please enter a number between 1 and ' + 
+                  str(len(product_list)) + ' or DONE if done: ')
+        
+            '''while int(user_input) > len(products):
+                user_input = input('Error: product identifier out of range... please enter an identifier between 1 and ' +
+                                   str(len(products)) + ', or zero if done: ')
+    
+                if user_input == 0:
+                    break
+                
+            product_identifier_list.append(int(user_input))'''
+    product_identifier_list = list(set(product_identifier_list))
+    
+    return (product_identifier_list)
 
+#test function
+#product_identifier_list = user_inputs(products)
 
-        product_identifier_list.append(int(user_input))
-
-cost_goods = 0
-for identifier in product_identifier_list:
-    print(products[identifier-1]['name'], products[identifier - 1]['price'])
-    cost_goods = cost_goods + float(products[identifier]['price']) 
-
-#california sales tax rate
-ca_tax_rate = 0.0725
-
-added_tax = round(cost_goods * ca_tax_rate,2)
-
-total_cost = round(cost_goods+added_tax, 2)
+def create_cost_dictionary(product_identifier_list, tax_rate):
+    cost_dictionary = {}
+    subtotal = 0
+    added_tax = 0
+    total_cost = 0
+    cost_dictionary['tax_rate'] = tax_rate
+    for identifier in product_identifier_list:
+        subtotal = subtotal + float(products[identifier]['price']) 
+    cost_dictionary['subtotal'] = subtotal
+    added_tax = round(subtotal * tax_rate,2)
+    total_cost = round(subtotal+ added_tax, 2)
+    cost_dictionary['added_tax'] = added_tax
+    cost_dictionary['total_cost'] = total_cost
+    
+    return(cost_dictionary)
+    
+#test function 
+#cost_dictionary = create_cost_dictionary(product_identifier_list, 0.0725)
 
 def print_item_and_price(product_list, identifier):
     print('+ ' + product_list[identifier-1]['name'] + ' ($' + str('%0.2f' % product_list[identifier-1]['price']) + ')')
     
 
-print('---------------------------------')
-print('Madeline Lee\'s Grocery Store (: ')
-print('---------------------------------')
-print('Web: github.com/madelinenlee/OPIM_243_shopping_cart_project')
-print('Phone: 123-456-5789')
-print('Checkout time: ', datetime.datetime.now())
-print('---------------------------------')
-print('Shopping Cart Items: ')
-for identifier in product_identifier_list:
-    print_item_and_price(products, identifier)
-print('---------------------------------')
-print('Subtotal: $' + str('%0.2f' % cost_goods))
-print('Plus CA Sales Tax: $' + str('%0.2f' % added_tax))
-print('Total: $' + str('%0.2f' % total_cost))
-print('---------------------------------')
-print('Thank you for your business! Please come again.')
+#test print item and price function
+# print_item_and_price(products, 1)
 
+def print_receipt(product_identifier_list, cost_dictionary):
 
+    print('---------------------------------')
+    print('Madeline Lee\'s Grocery Store (: ')
+    print('---------------------------------')
+    print('Web: github.com/madelinenlee/OPIM_243_shopping_cart_project')
+    print('Phone: 123-456-5789')
+    print('Checkout time: ', datetime.datetime.now())
+    print('---------------------------------')
+    print('Shopping Cart Items: ')
+    for identifier in product_identifier_list:
+        print_item_and_price(products, identifier)
+    print('---------------------------------')
+    print('Subtotal: $' + str('%0.2f' % cost_dictionary['subtotal']))
+    print('Plus CA Sales Tax: $' + str('%0.2f' % cost_dictionary['added_tax']))
+    print('Total: $' + str('%0.2f' % cost_dictionary['total_cost']))
+    print('---------------------------------')
+    print('Thank you for your business! Please come again.')
+    
+#test print_receipt function
+# print_receipt([1, 3, 12], create_cost_dictionary([1, 3, 12], 0.0725))
+
+def run_shopping_cart(product_list, tax_rate):
+    product_identifier_list = user_inputs(product_list)
+    cost_dictionary = create_cost_dictionary(product_identifier_list, tax_rate)
+    print_receipt(product_identifier_list, cost_dictionary)
+
+#test final function
+#run_shopping_cart(products, 0.0725)
