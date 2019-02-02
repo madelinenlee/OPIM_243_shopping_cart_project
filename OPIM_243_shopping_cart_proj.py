@@ -5,7 +5,7 @@ Created on Sat Feb  2 14:19:16 2019
 
 @author: madeline
 """
-import datetime:
+import datetime
 
 #copy-paste given output
 products = [
@@ -65,11 +65,21 @@ added_tax = round(cost_goods * ca_tax_rate,2)
 
 total_cost = round(cost_goods+added_tax, 2)
 
+def print_item_and_price(product_list, identifier):
+    print('+ ' + product_list[identifier-1]['name'] + ' ($' + str('%0.2f' % product_list[identifier-1]['price']) + ')')
+
+print_item_and_price(products, 1)
+
 print('---------------------------------')
 print('Madeline Lee\'s Grocery Store (: ')
 print('---------------------------------')
 print('Web: github.com/madelinenlee/OPIM_243_shopping_cart_project')
 print('Phone: 123-456-5789')
-print('Checkout time: ', )
+print('Checkout time: ', datetime.datetime.now())
+print('---------------------------------')
+print('Shopping Cart Items: ')
+for identifier in product_identifier_list:
+    print_item_and_price(products, identifier)
+
 
 
