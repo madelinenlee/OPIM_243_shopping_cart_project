@@ -67,8 +67,7 @@ total_cost = round(cost_goods+added_tax, 2)
 
 def print_item_and_price(product_list, identifier):
     print('+ ' + product_list[identifier-1]['name'] + ' ($' + str('%0.2f' % product_list[identifier-1]['price']) + ')')
-
-print_item_and_price(products, 1)
+    
 
 print('---------------------------------')
 print('Madeline Lee\'s Grocery Store (: ')
@@ -80,6 +79,11 @@ print('---------------------------------')
 print('Shopping Cart Items: ')
 for identifier in product_identifier_list:
     print_item_and_price(products, identifier)
-
+print('---------------------------------')
+print('Subtotal: $' + str('%0.2f' % cost_goods))
+print('Plus CA Sales Tax: $' + str('%0.2f' % added_tax))
+print('Total: $' + str('%0.2f' % total_cost))
+print('---------------------------------')
+print('Thank you for your business! Please come again.')
 
 
