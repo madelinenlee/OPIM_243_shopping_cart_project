@@ -30,11 +30,25 @@ products = [
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
     ]
 
+
 user_input = ''
 product_identifier_list = []
 while user_input != 'DONE':
     user_input = input('Please input a product identifier, or DONE if done: ')
-    product_identifier_list.append(user_input)
+    #check to see if list is done, if so, print identifiers
+    if user_input == 'DONE':
+        print(product_identifier_list)
     
-print(product_identifier_list)
-    
+    #check to see if it is a digit
+    elif user_input.isdigit():
+        #while loop to check not out of range    
+        while int(user_input) > len(products):
+            user_input = input('Error: product identifier out of range... please enter an identifier between 1 and ' +
+                               str(len(products)) + ', or zero if done: ')
+        
+            if user_input == 'DONE' or user_input == 0:
+                print(product_identifier_list)
+
+        product_identifier_list.append(user_input)
+
+
