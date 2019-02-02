@@ -5,6 +5,7 @@ Created on Sat Feb  2 14:19:16 2019
 
 @author: madeline
 """
+import datetime:
 
 #copy-paste given output
 products = [
@@ -49,8 +50,26 @@ while user_input != 'DONE':
             if user_input == 'DONE' or user_input == 0:
                 print(product_identifier_list)
 
+
         product_identifier_list.append(int(user_input))
 
+cost_goods = 0
 for identifier in product_identifier_list:
-    print(products[int(identifier)-1]['name'], products[int(identifier) - 1]['price'])
-    
+    print(products[identifier-1]['name'], products[identifier - 1]['price'])
+    cost_goods = cost_goods + float(products[identifier]['price']) 
+
+#california sales tax rate
+ca_tax_rate = 0.0725
+
+added_tax = round(cost_goods * ca_tax_rate,2)
+
+total_cost = round(cost_goods+added_tax, 2)
+
+print('---------------------------------')
+print('Madeline Lee\'s Grocery Store (: ')
+print('---------------------------------')
+print('Web: github.com/madelinenlee/OPIM_243_shopping_cart_project')
+print('Phone: 123-456-5789')
+print('Checkout time: ', )
+
+
