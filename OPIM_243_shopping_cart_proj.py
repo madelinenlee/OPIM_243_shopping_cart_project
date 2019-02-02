@@ -29,3 +29,12 @@ products = [
     {"id":19, "name": "Gluten Free Quinoa Three Cheese & Mushroom Blend", "department": "dry goods pasta", "aisle": "grains rice dried goods", "price": 3.99},
     {"id":20, "name": "Pomegranate Cranberry & Aloe Vera Enrich Drink", "department": "beverages", "aisle": "juice nectars", "price": 4.25}
     ]
+
+user_input = ''
+product_identifier_list = []
+while user_input != 'DONE':
+    user_input = input('Please input a product identifier, or DONE if done: ')
+    product_identifier_list.append(user_input)
+    
+print(product_identifier_list)
+    
