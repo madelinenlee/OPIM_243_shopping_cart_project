@@ -49,6 +49,8 @@ while user_input != 'DONE':
             if user_input == 'DONE' or user_input == 0:
                 print(product_identifier_list)
 
-        product_identifier_list.append(user_input)
+        product_identifier_list.append(int(user_input))
 
-
+for identifier in product_identifier_list:
+    print(products[int(identifier)-1]['name'], products[int(identifier) - 1]['price'])
+    
