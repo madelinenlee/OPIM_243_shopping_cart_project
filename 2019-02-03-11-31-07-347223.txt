@@ -1,0 +1,18 @@
+---------------------------------
+Madeline Lee's Grocery Store (: 
+---------------------------------
+Web: github.com/madelinenlee/OPIM_243_shopping_cart_project
+Phone: 123-456-5789
+Checkout time:  2019-02-03 11:31:07.348460
+---------------------------------
+Shopping Cart Items: 
++ 2 Chocolate Sandwich Cookies ($7.00)
++ 1 Dry Nose Oil ($21.99)
++ 2.2 lbs Organic Bananas at 0.79/lb ($1.74)
++ 3 Pure Coconut Water With Orange ($10.50)
+---------------------------------
+Subtotal: $41.23
+Plus CA Sales Tax: $2.99
+Total: $44.22
+---------------------------------
+Thank you for your business! Please come again.
