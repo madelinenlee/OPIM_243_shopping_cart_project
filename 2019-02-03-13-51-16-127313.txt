@@ -1,0 +1,17 @@
+---------------------------------
+Madeline Lee's Grocery Store (: 
+---------------------------------
+Web: github.com/madelinenlee/OPIM_243_shopping_cart_project
+Phone: 123-456-5789
+Checkout time:  2019-02-03 13:51:16.127595
+---------------------------------
+Shopping Cart Items: 
++ 0.83 lbs Organic Almonds Roasted Unsalted at $7.33/lb ($6.08)
++ 8 Organic Black Beans at $0.99 each ($7.92)
++ 5 Siggi's Peach Yogurt at $1.45 each ($7.25)
+---------------------------------
+Subtotal: $21.25
+Plus CA Sales Tax: $1.54
+Total: $22.79
+---------------------------------
+Thank you for your business! Please come again.
